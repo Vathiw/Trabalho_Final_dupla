@@ -9,3 +9,13 @@ const connection = mysql.createPool({
 });
 
 module.exports = connection;
+connection.getConnection()
+    .then((conn) => {
+      console.log('Conectado com sucesso ao MySQL database');
+      conn.release();
+    })
+    .catch((err) => {
+      console.error('Erro ao conectar no MySQL database:', err);
+    });
+
+module.exports = connection;
